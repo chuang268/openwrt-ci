@@ -12,10 +12,9 @@ env:
   DIY_SCRIPT: diy-script.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
-  UPLOAD_BIN_DIR: true
+  UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
   FIRMWARE_TAG: IPQ60XX-TEST
-  UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -169,24 +168,3 @@ jobs:
           ### 🧊 固件版本
           - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
           - ${{ env.VERSION_INFO }}
-    - name: Upload firmware to release
-      uses: softprops/action-gh-release@master
-      if: steps.tag.outputs.status == 'success' && !cancelled()
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        name: ${{ steps.tag.outputs.release_name }}
-        tag_name: ${{ steps.tag.outputs.release_tag }}
-        prerelease: true
-        body_path: release.txt
-        files: |
-         ${{ env.FIRMWARE }}/*.ubi
-         ${{ env.FIRMWARE }}/*.bin
-         ${{ env.FIRMWARE }}/*.manifest
-
-    - name: Delete releases and workflows runs
-      uses: ophub/delete-releases-workflows@main
-      with:
-        delete_workflows: true
-        workflows_keep_day: 3
-        gh_token: ${{ secrets.GITHUB_TOKEN }}
