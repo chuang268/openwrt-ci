@@ -123,49 +123,43 @@ jobs:
       if: (!cancelled())
       run: df -hT
 
-    - name: Upload Bin Directory(上传固件)
-      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
+    - name: Upload bin directory
       uses: actions/upload-artifact@main
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
-        name: ${{ env.SOURCE_REPO }}-bin-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.FILE_DATE }}
-        path: ${{ env.OPENWRT_PATH }}/bin
+        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: openwrt/bin
 
-    - name: Organize Files(整理文件)
-      if: steps.compile.outputs.status == 'success'
+    - name: Organize files
+      id: organize
       run: |
-        cd $OPENWRT_PATH/bin/targets/*/*
+        cd openwrt/bin/targets/*/*
+        rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
 
-
-    - name: Upload Firmware To Artifact(将固件上传到Artifact)
-      if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE != 'true'
+    - name: Upload firmware directory
       uses: actions/upload-artifact@main
+      if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: ${{ env.SOURCE_REPO }}-firmware-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.FILE_DATE }}
-        path: ${{ env.FIRMWARE_PATH }}
+        name: ipq6000${{ env.FILE_DATE }}
+        path: ${{ env.FIRMWARE }}
 
-    - name: Upload Firmware To Release(发布固件)
-      if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
-      uses: ncipollo/release-action@v1
-      with:
-        name: R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
-        allowUpdates: true
-        tag: ${{ env.FIRMWARE_TAG }}
-        token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: ${{ env.FIRMWARE_PATH }}/*
-        body: |
-          **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
-          ### 📒 测试固件(带WIFI)
-          - 这是带WIFI以及NSS的6.6内核固件
-          - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
-          - ⚽ 固件源码: ${{ env.REPO_URL }}
-          - 💝 源码分支: ${{ env.REPO_BRANCH }}
-          - 🌐 默认地址: 192.168.1.1
-          - 🔑 默认密码: password
-          ### 🧊 固件版本
-          - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
-          - ${{ env.VERSION_INFO }}
+    - name: Generate release tag
+      id: tag
+      if: env.UPLOAD_RELEASE == 'true'
+      run: |
+        echo "release_tag=Xiaomi AX1800-$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
+        touch release.txt
+        echo "Xiaomi AX1800 firmware" >> release.txt
+        grep luci-app-passwall ${{ env.FIRMWARE }}/openwrt-ipq60xx-generic-device-zn-m2.manifest | awk -F" - " '{print "Passwall " "`"$2"`"}' >> release.txt
+        grep xray-core ${{ env.FIRMWARE }}/openwrt-ipq60xx-generic-device-zn-m2.manifest | awk -F" - " '{print $2}'| awk -F"-" '{print "Xray " "`"$1"`"}' >> release.txt
+        grep sing-box ${{ env.FIRMWARE }}/openwrt-ipq60xx-generic-device-zn-m2.manifest | awk -F" - " '{print $2}'| awk -F"-" '{print "Sing-Box " "`"$1"`"}' >> release.txt
+        grep hysteria ${{ env.FIRMWARE }}/openwrt-ipq60xx-generic-device-zn-m2.manifest | awk -F" - " '{print $2}'| awk -F"-" '{print "Hysteria " "`"$1"`"}' >> release.txt
+        grep chinadns-ng ${{ env.FIRMWARE }}/openwrt-ipq60xx-generic-device-zn-m2.manifest | awk -F" - " '{print $2}'| awk -F"-" '{print "ChinaDNS-NG " "`"$1"`"}' >> release.txt
+        echo "详细包信息请查看 manifest 文件" >> release.txt
+        grep luci-app-passwall ${{ env.FIRMWARE }}/openwrt-ipq60xx-generic-device-zn-m2.manifest | awk -F" - " '{print "release_name=Passwall " $2}' >> $GITHUB_OUTPUT
+        echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to release
       uses: softprops/action-gh-release@master
@@ -178,6 +172,13 @@ jobs:
         prerelease: true
         body_path: release.txt
         files: |
-         ${{ env.FIRMWARE_TAG }}/*.ubi
-         ${{ env.FIRMWARE_TAG }}/*.bin
-         ${{ env.FIRMWARE_TAG }}/*.manifest
+         ${{ env.FIRMWARE }}/*.ubi
+         ${{ env.FIRMWARE }}/*.bin
+         ${{ env.FIRMWARE }}/*.manifest
+
+    - name: Delete releases and workflows runs
+      uses: ophub/delete-releases-workflows@main
+      with:
+        delete_workflows: true
+        workflows_keep_day: 3
+        gh_token: ${{ secrets.GITHUB_TOKEN }}
