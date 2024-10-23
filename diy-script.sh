@@ -2,8 +2,8 @@
 
 # 修改默认IP
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
-sed -i 's/.57/.56/g' include/kernel-6.6
-sed -i 's/66ce426ef96f99b8e1ef7ac72e780c730ef8b970f7aa5708501c4274d7abb7b3/f74812f78e88992c416434cb107639e13a551dbaff36bb90d6346ab16ab71a95/g' include/kernel-6.6
+# sed -i 's/.57/.56/g' include/kernel-6.6
+# sed -i 's/66ce426ef96f99b8e1ef7ac72e780c730ef8b970f7aa5708501c4274d7abb7b3/f74812f78e88992c416434cb107639e13a551dbaff36bb90d6346ab16ab71a95/g' include/kernel-6.6
 
 # 更改默认 Shell 为 zsh
 # sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
