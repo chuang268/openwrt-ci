@@ -100,6 +100,8 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
+        ./scripts/feeds install -a -f -p passwall_packages
+        ./scripts/feeds install -a -f -p passwall_luci
         ./scripts/feeds update -a
         ./scripts/feeds install -a
   
