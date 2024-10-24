@@ -97,7 +97,18 @@ jobs:
         ccache: false
         mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
         prefix: ${{ env.OPENWRT_PATH }}
-    
+
+    - name: Load custom feeds
+      run: |
+        set -x
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        chmod +x $diy-script_SH
+        cd $OPENWRT_PATH
+        $GITHUB_WORKSPACE/$diy-script_SH
+
+    - name: Update feeds
+      run: cd $OPENWRT_PATH && ./scripts/feeds update -a
+
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
