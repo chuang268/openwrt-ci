@@ -102,9 +102,9 @@ jobs:
       run: |
         set -x
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-        chmod +x $diy-script.SH
+        chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$diy-script.SH
+        $GITHUB_WORKSPACE/$DIY_SCRIPT
 
     - name: Update feeds
       run: cd $OPENWRT_PATH && ./scripts/feeds update -a
