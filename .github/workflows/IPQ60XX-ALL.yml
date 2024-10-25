@@ -58,7 +58,7 @@ jobs:
         root-reserve-mb: 1024
 
     - name: Checkout
-      uses: actions/checkout@kernel-6.6
+      uses: actions/checkout@main
 
     - name: Clone Source Code(克隆源代码)
       run: |
