@@ -3,7 +3,6 @@
 # 修改默认IP
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 sed -i 's/22/58371/g' package/network/services/dropbear/files/dropbear.config
-sed -i 's/JiaY-shi/nss-packages.git;k6.6/qosmio/nss-packages.git;NSS-12.5-K6.x/g' feeds.conf.default
 
 # 更改默认 Shell 为 zsh
 # sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
@@ -20,7 +19,6 @@ rm -rf feeds/luci/themes/luci-theme-netgear
 rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-serverchan
-rm -rf feeds/luci/applications/luci-app-passwall
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
@@ -44,9 +42,9 @@ function git_sparse_clone() {
 
 # 科学上网插件
 # git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
-git clone --depth=1 -b main https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
-git clone --depth=1 -b main https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
-git clone --depth=1 master https://github.com/xiaoxiao29/luci-app-adguardhome package/luci-app-adguardhome
+# git clone --depth=1 -b main https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
+# git clone --depth=1 -b main https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+# git clone --depth=1 master https://github.com/xiaoxiao29/luci-app-adguardhome package/luci-app-adguardhome
 # git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
 # Themes
