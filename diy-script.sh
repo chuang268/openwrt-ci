@@ -3,7 +3,7 @@
 # 修改默认IP
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 sed -i 's/22/58371/g' package/network/services/dropbear/files/dropbear.config
-sed -i 's/https://github.com/JiaY-shi/nss-packages.git;k6.6/https://github.com/qosmio/nss-packages.git;NSS-12.5-K6.x/g' feeds.conf.default
+sed -i 's/JiaY-shi/nss-packages.git;k6.6/qosmio/nss-packages.git;NSS-12.5-K6.x/g' feeds.conf.default
 
 # 更改默认 Shell 为 zsh
 # sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
