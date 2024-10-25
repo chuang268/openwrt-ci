@@ -7,7 +7,7 @@ on:
 
 env:
   REPO_URL: https://github.com/LiBwrt-op/openwrt-6.x.git
-  REPO_BRANCH: main
+  REPO_BRANCH: kernel-6.6
   CONFIG_FILE: configs/ipq60xx-all.config
   DIY_SCRIPT: diy-script.sh
   CLASH_KERNEL: amd64
@@ -58,7 +58,7 @@ jobs:
         root-reserve-mb: 1024
 
     - name: Checkout
-      uses: actions/checkout@main
+      uses: actions/checkout@kernel-6.6
 
     - name: Clone Source Code(克隆源代码)
       run: |
@@ -91,7 +91,7 @@ jobs:
 
     - name: Cache Toolchain(缓存工具链)
       if: env.CACHE_TOOLCHAIN == 'true'
-      uses: HiGarfield/cachewrtbuild@main
+      uses: HiGarfield/cachewrtbuild@kernel-6.6
       with:
         ccache: false
         mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
@@ -132,7 +132,7 @@ jobs:
 
     - name: Upload Bin Directory(上传固件)
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
-      uses: actions/upload-artifact@main
+      uses: actions/upload-artifact@kernel-6.6
       with:
         name: ${{ env.SOURCE_REPO }}-bin-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.FILE_DATE }}
         path: ${{ env.OPENWRT_PATH }}/bin
@@ -150,7 +150,7 @@ jobs:
 
     - name: Upload Firmware To Artifact(将固件上传到Artifact)
       if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE != 'true'
-      uses: actions/upload-artifact@main
+      uses: actions/upload-artifact@kernel-6.6
       with:
         name: ${{ env.SOURCE_REPO }}-firmware-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
