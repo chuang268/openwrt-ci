@@ -21,7 +21,7 @@ sed -i 's/22/58371/g' package/network/services/dropbear/files/dropbear.config
 # rm -rf feeds/luci/applications/luci-app-serverchan
 
 # 添加额外插件
-git clone master https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
+git clone master https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 # git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
 # git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 # git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
@@ -32,8 +32,8 @@ git clone master https://github.com/rufengsuixing/luci-app-adguardhome package/l
 
 # 科学上网插件
 # git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
-git clone --depth=1 -b main https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
-git clone --depth=1 -b main https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+git clone --depth=1 -b main https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall
+git clone --depth=1 -b main https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 # git clone --depth=1 master https://github.com/xiaoxiao29/luci-app-adguardhome package/luci-app-adguardhome
 # git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
