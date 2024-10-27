@@ -5,7 +5,7 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 sed -i 's/22/58371/g' package/network/services/dropbear/files/dropbear.config
 
 # Add a feed source
-echo 'src-git adguardhome https://github.com/rufengsuixing/luci-app-adguardhome' >>feeds.conf.default
+# echo 'src-git adguardhome https://github.com/rufengsuixing/luci-app-adguardhome' >>feeds.conf.default
 
 # 更改默认 Shell 为 zsh
 # sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
@@ -24,7 +24,7 @@ echo 'src-git adguardhome https://github.com/rufengsuixing/luci-app-adguardhome'
 # rm -rf feeds/luci/applications/luci-app-serverchan
 
 # 添加额外插件
-# git clone master https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
+git clone --depth=1 -b master https://github.com/xiaoxiao29/luci-app-adguardhome.git package/luci-app-adguardhome
 # git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
 # git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 # git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
