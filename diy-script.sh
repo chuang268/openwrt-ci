@@ -3,6 +3,8 @@
 # 修改默认IP
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 sed -i 's/22/58371/g' package/network/services/dropbear/files/dropbear.config
+sed -i '/php/s/^#//' package/network/services/uhttpd/files/uhttpd.config
+sed -i 's/"$(hexdump -vn 5 -e '"fd" 1/1 "%02x:" 2/2 "%x:"' /dev/urandom):/48"//g' package/base-files/files/etc/uci-defaults/12_network-generate-ula
 
 # Add a feed source
 # echo 'src-git adguardhome https://github.com/rufengsuixing/luci-app-adguardhome' >>feeds.conf.default
