@@ -26,7 +26,7 @@ sed -i 's/\"$(hexdump -vn 5 -e '"fd" 1/1 "%02x:" 2/2 "%x:"' /dev/urandom):/48"//
 # rm -rf feeds/luci/applications/luci-app-serverchan
 
 # 添加额外插件
-git clone --depth=1 -b master https://github.com/xiaoxiao29/luci-app-adguardhome.git package/luci-app-adguardhome
+git clone --depth=1 -b master https://github.com/stevenjoezhang/luci-app-adguardhome.git package/luci-app-adguardhome
 # git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
 # git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 # git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
