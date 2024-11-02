@@ -4,6 +4,7 @@
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 sed -i 's/time1.apple.com/ntp1.aliyun.com/g' package/base-files/files/bin/config_generate
 sed -i 's/time1.google.com/time1.cloud.tencent.com/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/timezone/zonename/g' package/base-files/files/bin/config_generate
 sed -i "315i 		set system.@system[-1].timezone='CST-8'" package/base-files/files/bin/config_generate
 sed -i 's/22/58371/g' package/network/services/dropbear/files/dropbear.config
