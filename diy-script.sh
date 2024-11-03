@@ -6,10 +6,18 @@ sed -i 's/time1.apple.com/ntp1.aliyun.com/g' package/base-files/files/bin/config
 sed -i 's/time1.google.com/time1.cloud.tencent.com/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/timezone/zonename/g' package/base-files/files/bin/config_generate
-sed -i "315i 		set system.@system[-1].timezone='CST-8'" package/base-files/files/bin/config_generate
+sed -i "315i\ 		set system.@system[-1].timezone='CST-8'" package/base-files/files/bin/config_generate
 sed -i 's/22/58371/g' package/network/services/dropbear/files/dropbear.config
 sed -i '/php/s/^#//' package/network/services/uhttpd/files/uhttpd.config
-sed -i 's/\"$(hexdump -vn 5 -e '"fd" 1/1 "%02x:" 2/2 "%x:"' /dev/urandom):/48"//g' package/base-files/files/etc/uci-defaults/12_network-generate-ula
+sed -i '/set/d' package/base-files/files/etc/uci-defaults/12_network-generate-ula
+sed -i '4i\ set network.globals.ula_prefix=' package/base-files/files/etc/uci-defaults/12_network-generate-ula
+sed -i 's/ImmortalWrt/2g/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+sed -i "109i set \${si}.hidden='1'" package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+sed -i '2s/0/1/g' feeds/packages/net/miniupnpd/files/upnpd.config
+sed -i '7s/20480/204800/g' feeds/packages/net/miniupnpd/files/upnpd.config
+sed -i '8s/2048/51200/g' feeds/packages/net/miniupnpd/files/upnpd.config
+sed -i '54s/dhcp/pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
+sed -i '86s/dhcp/pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
 
 # Add a feed source
 # echo 'src-git adguardhome https://github.com/rufengsuixing/luci-app-adguardhome' >>feeds.conf.default
