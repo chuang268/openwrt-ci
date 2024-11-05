@@ -40,7 +40,7 @@ sed -i '86s/dhcp/pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
 
 # 添加额外插件
 git clone --depth=1 -b main https://github.com/leshanydy2022/luci-app-adguardhome.git package/luci-app-adguardhome
-# git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
+git clone --depth=1 -b main https://github.com/QC3284/luci-app-ramfree.git package/luci-app-ramfree
 # git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 # git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 # git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
