@@ -8,7 +8,7 @@ sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/timezone/zonename/g' package/base-files/files/bin/config_generate
 sed -i "315i\ 		set system.@system[-1].timezone='CST-8'" package/base-files/files/bin/config_generate
 sed -i 's/22/58371/g' package/network/services/dropbear/files/dropbear.config
-# sed -i '/php/s/^#//' package/network/services/uhttpd/files/uhttpd.config
+sed -i '/php/s/^#//' package/network/services/uhttpd/files/uhttpd.config
 sed -i '/set/d' package/base-files/files/etc/uci-defaults/12_network-generate-ula
 sed -i '4i\ set network.globals.ula_prefix=' package/base-files/files/etc/uci-defaults/12_network-generate-ula
 sed -i 's/ImmortalWrt/2g/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
