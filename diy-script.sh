@@ -50,8 +50,8 @@ git clone --depth=1 -b main https://github.com/QC3284/luci-app-ramfree.git packa
 
 # 科学上网插件
 # git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
-  git clone --depth=1 -b master https://github.com/v2rayA/v2raya-openwrt.git package/v2ray-core
-  git clone --depth=1 -b master https://github.com/v2rayA/v2raya-openwrt.git package/luci-app-v2raya
+git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/openwrt-passwall
+git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall package/luci-app-passwall
 # git clone --depth=1 master https://github.com/xiaoxiao29/luci-app-adguardhome package/luci-app-adguardhome
 # git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
