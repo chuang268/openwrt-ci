@@ -50,12 +50,12 @@ git clone --depth=1 -b main https://github.com/QC3284/luci-app-ramfree.git packa
 
 # 移除 OpenWrt Feeds 自带的核心库
 rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/passwall-packages
+git clone --depth=1 -b main https://github.com/xiaorouji/openwrt-passwall-packages package/passwall-packages
 
 # 科学上网插件
 # git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
-git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/openwrt-passwall
-git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall package/luci-app-passwall
+# git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/openwrt-passwall
+# git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall package/luci-app-passwall
 # git clone --depth=1 master https://github.com/xiaoxiao29/luci-app-adguardhome package/luci-app-adguardhome
 # git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
