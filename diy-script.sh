@@ -50,7 +50,7 @@ git clone --depth=1 -b main https://github.com/QC3284/luci-app-ramfree.git packa
 
 # 移除 OpenWrt Feeds 自带的核心库
 rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
-git clone --depth=1 -b main https://github.com/xiaorouji/openwrt-passwall-packages package/passwall-packages
+git clone --depth=1 -b main https://github.com/xiaorouji/openwrt-passwall-packages package/passwall_packages
 
 # 科学上网插件
 # git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
