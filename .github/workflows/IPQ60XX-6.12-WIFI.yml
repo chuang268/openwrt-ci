@@ -88,15 +88,7 @@ jobs:
         mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
         prefix: ${{ env.OPENWRT_PATH }}
     
-    - name: Install Feeds(安装feeds)
-      run: |
-        cd $OPENWRT_PATH
-        ./scripts/feeds update -a
-        git clone --depth 1 https://github.com/sbwml/openwrt_pkgs.git package/new/custom
-        mv package/new/custom/luci-app-netspeedtest  package/new
-        mv package/new/custom/speedtest-cli package/new
-        rm -rf package/new/custom
-        ./scripts/feeds install -a
+
   
     - name: Load Custom Configuration(加载自定义配置)
       run: |
