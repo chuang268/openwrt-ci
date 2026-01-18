@@ -50,12 +50,12 @@ sed -i '86s/dhcp/pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
 # git_sparse_clone master https://github.com/syb999/openwrt-19.07.1 package/network/services/msd_lite
 
 # 移除 openwrt feeds 自带的核心包
-rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box,geoview}
-git clone https://github.com/sbwml/openwrt_helloworld package/helloworld
+# rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box,geoview}
+# git clone https://github.com/sbwml/openwrt_helloworld package/helloworld
 
 # 更新 golang 1.23 版本
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+# rm -rf feeds/packages/lang/golang
+# git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
 # 科学上网插件
 # git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
