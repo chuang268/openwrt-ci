@@ -1,8 +1,8 @@
-src-git packages https://github.com/immortalwrt/packages.git
+#src-git packages https://github.com/immortalwrt/packages.git
 #src-git packages https://github.com/openwrt/packages.git
-src-git luci https://github.com/immortalwrt/luci.git
-src-git routing https://git.openwrt.org/feed/routing.git
-src-git telephony https://git.openwrt.org/feed/telephony.git
+#src-git luci https://github.com/immortalwrt/luci.git
+#src-git routing https://git.openwrt.org/feed/routing.git
+#src-git telephony https://git.openwrt.org/feed/telephony.git
 src-git nss_packages https://github.com/qosmio/nss-packages.git;NSS-12.5-K6.x
 #src-git adguardhome https://github.com/kongfl888/luci-app-adguardhome master
 #src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main
