@@ -49,9 +49,13 @@ sed -i '86s/dhcp/pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
 # git_sparse_clone openwrt-18.06 https://github.com/immortalwrt/luci applications/luci-app-eqos
 # git_sparse_clone master https://github.com/syb999/openwrt-19.07.1 package/network/services/msd_lite
 
-# 移除 OpenWrt Feeds 自带的核心库
-# rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
-# git clone --depth=1 -b main https://github.com/xiaorouji/openwrt-passwall-packages package/passwall_packages
+# 移除 openwrt feeds 自带的核心包
+rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box}
+git clone https://github.com/sbwml/openwrt_helloworld package/helloworld
+
+# 更新 golang 1.23 版本
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
 # 科学上网插件
 # git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
