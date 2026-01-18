@@ -29,8 +29,8 @@ sed -i '86s/dhcp/pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
 # sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
 
 # 移除要替换的包
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
+# rm -rf feeds/packages/lang/golang
+# git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
 # rm -rf feeds/packages/net/msd_lite
 # rm -rf feeds/packages/net/smartdns
 # rm -rf feeds/luci/themes/luci-theme-argon
