@@ -144,4 +144,4 @@ sed -i "s/${orig_version}/R${date_version} by Haiibo/g" package/lean/default-set
 # sed -i 's/services/vpn/g' feeds/luci/applications/luci-app-v2ray-server/luasrc/view/v2ray_server/*.htm
 
 ./scripts/feeds update -a
-./scripts/feeds install -a
+./scripts/feeds install -a -force-reinstall
