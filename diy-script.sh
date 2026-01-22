@@ -50,8 +50,12 @@ sed -i '86s/dhcp/pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
 # git_sparse_clone master https://github.com/syb999/openwrt-19.07.1 package/network/services/msd_lite
 
 # 移除 openwrt feeds 自带的核心包
-# rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box}
-# git clone https://github.com/sbwml/openwrt_helloworld package/helloworld
+rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
+git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/passwall-packages
+
+# 移除 openwrt feeds 过时的luci版本
+rm -rf feeds/luci/applications/luci-app-passwall
+git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
 
 # 更新 golang 1.23 版本
 # rm -rf feeds/packages/lang/golang
@@ -59,8 +63,8 @@ sed -i '86s/dhcp/pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
 
 # 科学上网插件
 # git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
-git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/openwrt-passwall
-git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall package/luci-app-passwall
+# git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/openwrt-passwall
+# git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall package/luci-app-passwall
 # git clone --depth=1 master https://github.com/xiaoxiao29/luci-app-adguardhome package/luci-app-adguardhome
 # git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
