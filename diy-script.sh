@@ -63,8 +63,8 @@ sed -i '86s/dhcp/pppoe/g' package/base-files/files/lib/functions/uci-defaults.sh
 
 # 科学上网插件
 # git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
-git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/openwrt-passwall
-git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall package/luci-app-passwall
+# git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/openwrt-passwall
+# git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall package/luci-app-passwall
 # git clone --depth=1 master https://github.com/xiaoxiao29/luci-app-adguardhome package/luci-app-adguardhome
 # git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
